@@ -17,7 +17,11 @@ app.get('/api/test', (req, res) => {
 });
 
 const authRoutes = require('./routes/auth');
+const advertisementRoutes = require('./routes/advertisements');
+
 app.use('/api', authRoutes);
+app.use('/api/ads', advertisementRoutes);
+app.use('/api', advertisementRoutes);
 
 // Pokretanje servera
 app.listen(port, () => console.log(`Server is running on port ${port}`));

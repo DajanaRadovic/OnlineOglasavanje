@@ -18,7 +18,7 @@ export async function addAd(adData, token) {
   return await response.json();
 }
 
-export async function getAds(page = 1, limit = 2) {
+export async function getAds(page = 1, limit = 20) {
   const response = await fetch(`${API_URL}/ads?page=${page}&limit=${limit}`);
   if (!response.ok) {
     const errorData = await response.json();

@@ -5,11 +5,14 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AddAdvertisementPage from './pages/AddAdvertisementPage';
+import AdDetailsPage from './pages/AdDetailsPage';
 import './App.css';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [refreshAds, setRefreshAds] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -25,6 +28,7 @@ function App() {
     localStorage.removeItem('username');
     setIsLoggedIn(false);
     setUsername('');
+    setRefreshAds(true);
   };
 
   return (
@@ -41,10 +45,11 @@ function App() {
     <Navbar isLoggedIn={isLoggedIn} username={username} onLogout={handleLogout} />
     <div className="container mt-5 pt-4">
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} username={username} />} />
         <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/add-ad" element={isLoggedIn ? <AddAdvertisementPage /> : <Navigate to="/login" />} />
+        <Route path="/ads/:id" element={<AdDetailsPage isLoggedIn={isLoggedIn} username={username} />} />
       </Routes>
     </div>
   </BrowserRouter>

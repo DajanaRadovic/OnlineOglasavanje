@@ -75,51 +75,7 @@ async function fetchAds(req, res) {
     ads
   });
 }
- // Dobavljanje oglasa
-/*
- router.get('/ads', authenticateToken, async(req,res)=>{
-  try{
-    const {page = 1, limit = 20, category, search, minPrice, maxPrice, mine} = req.query;
-
-    const filter = {};
-    if(category){
-      filter.category = category;
-    }
-
-    if(search){
-      filter.title = {$regex: search, $options:'i'};
-    }
-
-    if(minPrice || maxPrice){
-      filter.price = {};
-      if(minPrice) filter.price.$gte = Number(minPrice);
-      if(maxPrice) filter.price.$lte = Number(maxPrice);
-    }
-
-    if(mine === 'true'){
-      filter.user = req.user.id; //prikaz samo ulogovanog korisnika
-    }
-    const skip = (page - 1) * limit;
-    const total = await Advertisement.countDocuments(filter);
-    const ads = await Advertisement.find(filter)
-      .sort({ postedAt: -1 })
-      .skip(skip)
-      .limit(Number(limit))
-      .populate('user', 'username');
-
-    res.json({
-      total,
-      page: Number(page),
-      pages: Math.ceil(total / limit),
-      ads
-    });
-
-  }catch(error){
-    console.error('Greska pri dohvatanju oglasa:', error);
-    res.status(500).json({message:'Greska na serveru'});
-  }
- });*/
-
+ 
 //Dobavljanje oglasa po ID-u
 router.get('/ads/:id', async (req, res) => {
   try {

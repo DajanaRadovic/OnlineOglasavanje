@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdsTable from '../components/AdsTable';
 
 function HomePage({isLoggedIn, username, refreshAds, setRefreshAds}) {
+
   const [adsData, setAdsData] = useState({ ads: [], total: 0, page: 1, pages: 1 });
   const [filters, setFilters] = useState({
     category: '',
@@ -11,12 +12,13 @@ function HomePage({isLoggedIn, username, refreshAds, setRefreshAds}) {
     mine: false,
   });
   
- useEffect(() => {
-  if (refreshAds) {
-    setAdsData({ ads: [], total: 0, page: 1, pages: 1 });
-    setRefreshAds(false);
-  }
-}, [refreshAds, setRefreshAds]);
+  useEffect(() => {
+    if (refreshAds) {
+      setAdsData({ ads: [], total: 0, page: 1, pages: 1 });
+      setRefreshAds(false);
+    }
+  }, [refreshAds, setRefreshAds]);
+
   useEffect(() => {
     fetchAds(1); // učitavanje prve stranice pri promeni filtera
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,14 +26,11 @@ function HomePage({isLoggedIn, username, refreshAds, setRefreshAds}) {
 
   useEffect(() => {
     if (!isLoggedIn && filters.mine) {
-    setFilters(prev => ({ ...prev, mine: false }));
-  }
-  
-  fetchAds(1); // kad se loguje/izloguje, učitaj oglase
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [isLoggedIn]);
-
-
+      setFilters(prev => ({ ...prev, mine: false }));
+    }
+    fetchAds(1); // kad se loguje/izloguje, učitaj oglase
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn]);
 
   const fetchAds = (page) => {
     const params = new URLSearchParams();
@@ -73,12 +72,9 @@ function HomePage({isLoggedIn, username, refreshAds, setRefreshAds}) {
     fetchAds(newPage);
   };
 
-  
-
   return (
     <div className="container mt-5 pt-5">
-      <h1>Lista oglasa</h1>
-
+      
       {/* Filteri */}
       <form className="mb-4 row g-3">
         <div className="col-md-3">

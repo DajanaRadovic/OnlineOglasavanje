@@ -35,9 +35,10 @@ function AdsTable({ ads = [], isLoggedIn, username }) {
         </td>
         
       )}
+      {isLoggedIn &&(
       <td className="fw-semibold">
         <Link to={`/ads/${ad._id}`}>DETALJI</Link>
-      </td>
+      </td>)}
     </tr>
   ))}
 </tbody>

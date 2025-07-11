@@ -1,8 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { deleteAd } from '../services/advertisementService';
 
+
 function AdsTable({ ads = [], isLoggedIn, username, refreshAds }) {
+  const navigate = useNavigate();
 
   const handleDelete = async (adId) => {
     if (!window.confirm('Da li ste sigurni da želite da obrišete oglas?')) return;
@@ -46,7 +48,7 @@ function AdsTable({ ads = [], isLoggedIn, username, refreshAds }) {
               <td>
                 {ad.user.username === username ? (
                   <>
-                    <button className="btn btn-sm btn-outline-primary me-2">Edit</button>
+                    <button className="btn btn-sm btn-outline-primary me-2" onClick={() => navigate(`/edit-ad/${ad._id}`)} >Edit</button>
                     <button className="btn btn-sm btn-outline-danger" onClick={() => handleDelete(ad._id)}>Delete</button>
                   </>
                 ) : (

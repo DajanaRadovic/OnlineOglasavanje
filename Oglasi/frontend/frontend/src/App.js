@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import AddAdvertisementPage from './pages/AddAdvertisementPage';
 import AdDetailsPage from './pages/AdDetailsPage';
 import './App.css';
+import EditAdvertisementPage from './pages/EditAdvertisementPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -50,6 +51,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/add-ad" element={isLoggedIn ? <AddAdvertisementPage /> : <Navigate to="/login" />} />
         <Route path="/ads/:id" element={<AdDetailsPage isLoggedIn={isLoggedIn} username={username} />} />
+        <Route path="/edit-ad/:id" element={<EditAdvertisementPage />} />
       </Routes>
     </div>
   </BrowserRouter>

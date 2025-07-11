@@ -12,7 +12,6 @@ function HomePage({isLoggedIn, username, refreshAds, setRefreshAds}) {
     mine: false,
   });
 
-  
   useEffect(() => {
     if (refreshAds) {
       setAdsData({ ads: [], total: 0, page: 1, pages: 1 });

@@ -57,3 +57,21 @@ export const deleteAd = async (adId, token) =>{
   }
   return await response.json();
 }
+
+//update
+export const updateAd = async(adId, adData, token)=>{
+  const response = await fetch(`${API_URL}/ads/${adId}`,{
+    method: 'PUT',
+    headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(adData)
+  });
+
+  if(!response.ok){
+    const error = await response.json();
+    throw new Error(error.message || 'Greska prilikom izmene oglasa');
+  }
+  return await response.json();
+}

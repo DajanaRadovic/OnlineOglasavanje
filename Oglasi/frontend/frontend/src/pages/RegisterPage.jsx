@@ -8,10 +8,29 @@ function RegisterPage() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  const validateForm = () => {
+    if (username.length < 3) {
+      return 'Korisničko ime mora imati bar 3 karaktera.';
+    }
+    if (password.length < 6) {
+      return 'Šifra mora imati bar 6 karaktera.';
+    }
+    if (phone && !/^\d{6,15}$/.test(phone)) {
+      return 'Telefon mora sadržati samo brojeve (6-15 cifara).';
+    }
+    return '';
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
+
+    const validationError = validateForm();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
 
     try {
       const data = await register(username, password, phone);
@@ -20,7 +39,7 @@ function RegisterPage() {
       setPass('');
       setPhone('');
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Greška prilikom registracije.');
     }
   };
 
@@ -62,6 +81,7 @@ function RegisterPage() {
             className="form-control"
             value={phone}
             onChange={e => setPhone(e.target.value)}
+            placeholder="Samo brojevi"
           />
         </div>
 

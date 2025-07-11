@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { deleteAd } from '../services/advertisementService';
 
 function AdDetailsPage({ isLoggedIn, username }) {
   const { id } = useParams();
@@ -20,6 +21,17 @@ function AdDetailsPage({ isLoggedIn, username }) {
   }, [isLoggedIn, navigate]);
 
   if (!ad) return <p>Učitavanje...</p>;
+
+  const handleDelete = async()=>{
+    if(!window.confirm('Da li ste sigurni da zelite da obrisete oglas?')) return;
+    try{
+      const token = localStorage.getItem('token');
+      await deleteAd(ad._id, token);
+      navigate('/');
+    }catch(error){
+      alert(error.message);
+    }
+  }
 
   const isOwner = isLoggedIn && ad.user.username === username;
 
@@ -54,7 +66,7 @@ function AdDetailsPage({ isLoggedIn, username }) {
                 >
                   Izmeni
                 </button>
-                <button className="btn btn-outline-danger">
+                <button className="btn btn-outline-danger" onClick={handleDelete}>
                   Obriši
                 </button>
               </div>

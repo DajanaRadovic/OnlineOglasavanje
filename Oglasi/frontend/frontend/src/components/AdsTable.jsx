@@ -1,47 +1,67 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { deleteAd } from '../services/advertisementService';
 
-function AdsTable({ ads = [], isLoggedIn, username }) {
+function AdsTable({ ads = [], isLoggedIn, username, refreshAds }) {
+
+  const handleDelete = async (adId) => {
+    if (!window.confirm('Da li ste sigurni da želite da obrišete oglas?')) return;
+    try {
+      const token = localStorage.getItem('token');
+      await deleteAd(adId, token);
+      alert('Oglas uspešno obrisan');
+      if (refreshAds) refreshAds(); // Osvježi oglase ako funkcija postoji
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <table className="table modern-table">
       <thead>
-  <tr>
-    <th>Slika</th>
-    <th>Naziv</th>
-    <th>Cena</th>
-    <th>Grad</th>
-    <th>Kategorija</th>
-    {isLoggedIn && <th>Akcije</th>}
-  </tr>
-</thead>
-<tbody>
-  {ads.map(ad => (
-    <tr key={ad._id}>
-      <td>
-        <img
-          src={ad.imageUrl || 'https://via.placeholder.com/70'}
-          alt={ad.title}
-          className="ad-image"
-        />
-      </td>
-      <td className="fw-semibold">{ad.title}</td>
-      <td className="text-primary fw-bold">{ad.price} RSD</td>
-      <td>{ad.city}</td>
-      <td className="text-capitalize">{ad.category}</td>
-      {isLoggedIn && (
-        <td>
-          <button className="btn btn-sm btn-outline-primary me-2">Edit</button>
-          <button className="btn btn-sm btn-outline-danger">Delete</button>
-        </td>
-        
-      )}
-      {isLoggedIn &&(
-      <td className="fw-semibold">
-        <Link to={`/ads/${ad._id}`}>DETALJI</Link>
-      </td>)}
-    </tr>
-  ))}
-</tbody>
+        <tr>
+          <th>Slika</th>
+          <th>Naziv</th>
+          <th>Cena</th>
+          <th>Grad</th>
+          <th>Kategorija</th>
+          {isLoggedIn && <th>Akcije</th>}
+        </tr>
+      </thead>
+      <tbody>
+        {ads.map(ad => (
+          <tr key={ad._id}>
+            <td>
+              <img
+                src={ad.imageUrl || 'https://via.placeholder.com/70'}
+                alt={ad.title}
+                className="ad-image"
+              />
+            </td>
+            <td className="fw-semibold">{ad.title}</td>
+            <td className="text-primary fw-bold">{ad.price} RSD</td>
+            <td>{ad.city}</td>
+            <td className="text-capitalize">{ad.category}</td>
+            {isLoggedIn && (
+              <td>
+                {ad.user.username === username ? (
+                  <>
+                    <button className="btn btn-sm btn-outline-primary me-2">Edit</button>
+                    <button className="btn btn-sm btn-outline-danger" onClick={() => handleDelete(ad._id)}>Delete</button>
+                  </>
+                ) : (
+                  <span className="text-muted">Nije vaš oglas</span>
+                )}
+              </td>
+              
+            )}
+            {isLoggedIn &&(
+            <td className="fw-semibold">
+              <Link to={`/ads/${ad._id}`}>DETALJI</Link>
+            </td>)}
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 }

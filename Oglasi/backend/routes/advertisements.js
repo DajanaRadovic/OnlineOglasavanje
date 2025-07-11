@@ -89,4 +89,54 @@ router.get('/ads/:id', async (req, res) => {
   }
 });
 
+//Brisanje oglasa
+router.delete('/ads/:id', authenticateToken, async (req, res)=>{
+  try{
+    const ad = await Advertisement.findById(req.params.id);
+    if(!ad){
+      return res.status(404).json({message: 'Oglas nije pronadjen'})
+    }
+    // Provera da li je ulogovani korisnik vlasnik oglasa
+    if (ad.user.toString() !== req.user.id) {
+      return res.status(403).json({ message: 'Nemate dozvolu da obrišete ovaj oglas' });
+    }
+
+    await ad.deleteOne();
+     res.json({ message: 'Oglas uspešno obrisan' });
+
+  }catch(error){
+    console.error('Greska pri brisanju oglasa:', error);
+    res.status(500).json({message:'Greska na serveru'});
+  }
+})
+
+//Editovanje oglasa
+router.put('/ads/:id', authenticateToken, async (req, res)=>{
+  try{
+    const ad = await Advertisement.findById(req.params.id);
+    if(!ad){
+      return res.status(404).json({message:'Oglas nije pronadjen'});
+    }
+
+    if(ad.user.toString() != req.user.id){
+      return res.status(403).json({message:'Nemate dozvolu za menjanje oglasa'});
+    }
+
+    // Ažuriranje vrednosti
+    ad.title = req.body.title || ad.title;
+    ad.description = req.body.description || ad.description;
+    ad.imageUrl = req.body.imageUrl || ad.imageUrl;
+    ad.price = req.body.price || ad.price;
+    ad.category = req.body.category || ad.category;
+    ad.city = req.body.city || ad.city;
+
+    await ad.save();
+    res.json({ message: 'Oglas uspešno ažuriran', ad });
+
+  }catch(error){
+    console.error('Greska prilikom izmene:', error);
+    res.status(500).json({message:'Greska na serveru'});
+  }
+})
+
 module.exports = router;

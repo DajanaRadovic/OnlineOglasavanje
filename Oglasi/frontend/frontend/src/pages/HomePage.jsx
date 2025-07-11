@@ -11,6 +11,7 @@ function HomePage({isLoggedIn, username, refreshAds, setRefreshAds}) {
     maxPrice: '',
     mine: false,
   });
+
   
   useEffect(() => {
     if (refreshAds) {
@@ -145,7 +146,7 @@ function HomePage({isLoggedIn, username, refreshAds, setRefreshAds}) {
       </form>
 
       {/* Tabela oglasa */}
-      <AdsTable ads={adsData.ads} isLoggedIn={isLoggedIn} username={username} />
+      <AdsTable ads={adsData.ads} isLoggedIn={isLoggedIn} username={username} refreshAds={() => fetchAds(1)} />
 
       {/* Paginacija */}
       <nav aria-label="Paginacija" className="mt-4">

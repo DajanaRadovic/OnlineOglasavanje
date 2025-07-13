@@ -92,4 +92,12 @@ node seed.js
 - Prikazuje se 20 oglasa po stranici
 
 ---
+## 🔒 Bezbednost aplikacije
+
+- Validacija inputa kod registracije
+- JWT autentifikacija
+- Hashiranje lozinki bcrypt-om
+- Autorizacija korisnika za izmene i brisanje oglasa
+- Korišćenje `.env` fajla za osetljive podatke
+
 

@@ -100,4 +100,27 @@ node seed.js
 - Autorizacija korisnika za izmene i brisanje oglasa
 - Korišćenje `.env` fajla za osetljive podatke
 
+## 📦 Dodatna instalacija za backend
+
+   Prvo inicijalizujte Node.js projekat:
+   
+   ```bash
+       npm init -y
+   ```
+Instalirajte potrebne pakete:
+ ```bash
+     npm install mongoose
+     npm install express
+     npm install dotenv
+   ```
+## 📦 Dodatna instalacija za frontend
+
+```bash
+    npm install
+  ```
+  ```bash
+    npm install bootstrap
+  ```
+
+
 

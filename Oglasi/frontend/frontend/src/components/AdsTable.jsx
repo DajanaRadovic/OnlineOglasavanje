@@ -12,11 +12,24 @@ function AdsTable({ ads = [], isLoggedIn, username, refreshAds }) {
       const token = localStorage.getItem('token');
       await deleteAd(adId, token);
       alert('Oglas uspešno obrisan');
-      if (refreshAds) refreshAds(); // Osvježi oglase ako funkcija postoji
+      if (refreshAds) refreshAds(); // Osvježavanje oglasa ako funkcija postoji
     } catch (error) {
       alert(error.message);
     }
   };
+
+  const categoryLabels = {
+    clothing: 'Odeća',
+    tools: 'Alati',
+    sports: 'Sport',
+    accessories: 'Aksesoari',
+    furniture: 'Nameštaj',
+    pets: 'Ljubimci',
+    games: 'Igre',
+    books: 'Knjige',
+    technology: 'Tehnologija'
+  };
+
 
   return (
     <table className="table modern-table">
@@ -43,7 +56,7 @@ function AdsTable({ ads = [], isLoggedIn, username, refreshAds }) {
             <td className="fw-semibold">{ad.title}</td>
             <td className="text-primary fw-bold">{ad.price} RSD</td>
             <td>{ad.city}</td>
-            <td className="text-capitalize">{ad.category}</td>
+            <td>{categoryLabels[ad.category] || ad.category}</td>
             {isLoggedIn && (
               <td>
                 {ad.user.username === username ? (

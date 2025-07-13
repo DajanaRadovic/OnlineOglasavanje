@@ -4,7 +4,7 @@ function Navbar({ isLoggedIn, username, onLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-tall">
       <div className="container">
-        <Link className="navbar-brand" to="/">Oglasi</Link>
+        <Link className="navbar-brand" to="/">OGLASI</Link>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto">
             {isLoggedIn ? (

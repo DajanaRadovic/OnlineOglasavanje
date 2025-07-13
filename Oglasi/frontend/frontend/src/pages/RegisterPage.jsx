@@ -88,7 +88,7 @@ function RegisterPage() {
         {error && <div className="alert alert-danger">{error}</div>}
         {success && <div className="alert alert-success">{success}</div>}
 
-        <button className="btn btn-primary w-100" type="submit">
+        <button className="btn btn-pink w-100" type="submit">
           Registruj se
         </button>
       </form>

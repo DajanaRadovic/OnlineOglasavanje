@@ -28,6 +28,17 @@
   color: #61dafb;
 }
 
+.btn-pink {
+  background-color: rgb(215, 189, 208) ;
+  border-color: rgb(213, 173, 202) ;
+  color: black;
+}
+
+.btn-pink:hover {
+  background-color:  rgb(213, 173, 202);
+  border-color:  rgb(213, 173, 202);
+}
+
 .navbar-tall {
   padding-top: 2rem; 
   padding-bottom: 2rem;   
@@ -37,6 +48,60 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
   letter-spacing: 0.05em; 
 }
+
+.custom-navbar {
+  background: linear-gradient(90deg, #f1bfe2 0%, #f4b395 100%);
+  padding: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+}
+
+.custom-navbar a, 
+.custom-navbar .navbar-brand, 
+.custom-navbar .nav-link, 
+.custom-navbar .nav-item {
+  color: black !important;
+}
+
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.nav-link-hover {
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link-hover::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: rgb(216, 143, 197);
+  transition: width 0.3s;
+  margin-top: 3px;
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
+}
+
+.nav-link-hover:hover {
+  color: #720559 !important;
+}
+
+.btn-light {
+  font-weight: 500;
+}
+
+.page-item.active .page-link {
+  background-color: #ff69b4; 
+  border-color: #ff69b4;
+  color: white;
+}
+
 
 .modern-table {
   width: 100%;

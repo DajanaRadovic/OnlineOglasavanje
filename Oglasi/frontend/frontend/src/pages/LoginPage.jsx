@@ -34,7 +34,7 @@ function LoginPage({ setIsLoggedIn, setUsername }) {
         className="border rounded shadow p-4"
         style={{ minWidth: '350px', maxWidth: '400px', width: '100%' }}
       >
-        <h2 className="mb-4 text-center">Login</h2>
+        <h2 className="mb-4 text-center">Prijava</h2>
 
         <div className="mb-3">
         <label>Korisničko ime</label>
@@ -57,7 +57,7 @@ function LoginPage({ setIsLoggedIn, setUsername }) {
         />
       </div>
         {error && <div className="alert alert-danger">{error}</div>}
-        <button className="btn btn-primary w-100" type="submit">
+        <button className="btn btn-pink w-100" type="submit">
           Prijavi se
         </button>
       </form>

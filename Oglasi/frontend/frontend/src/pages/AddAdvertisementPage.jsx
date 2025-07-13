@@ -135,7 +135,7 @@ function AddAdvertisementPage() {
           )}
 
           <div className="text-center">
-            <button type="submit" className="btn btn-primary px-5">Dodaj</button>
+            <button type="submit" className="btn btn-pink px-5">Dodaj</button>
           </div>
         </form>
       </div>

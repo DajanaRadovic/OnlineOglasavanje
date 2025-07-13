@@ -54,7 +54,7 @@ function AdsTable({ ads = [], isLoggedIn, username, refreshAds }) {
               />
             </td>
             <td className="fw-semibold">{ad.title}</td>
-            <td className="text-primary fw-bold">{ad.price} RSD</td>
+            <td className="text-pink fw-bold">{ad.price} RSD</td>
             <td>{ad.city}</td>
             <td>{categoryLabels[ad.category] || ad.category}</td>
             {isLoggedIn && (

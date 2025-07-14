@@ -1,20 +1,43 @@
-# 🛒 Online Oglasavanje - Full Stack Aplikacija
+#  Online Advertising - Full Stack Application
 
-Ovo je full stack aplikacija za online oglašavanje, razvijena korišćenjem **Express.js** za backend, **React.js** za frontend i **MongoDB** za bazu podataka.
+This is a full stack application for online advertising, developed using Express.js for the backend, React.js for the frontend, and MongoDB for the database.
 
-## 📌 Tehnologije
+## Technologies
 
 - **Backend:** Express.js
 - **Frontend:** React.js
 - **Baza:** MongoDB
 
-### Pokretanje servera:
- Navigacija u backend direktorijum i pokretanje:
+## Setup for backend
+
+   First, initialize the Node.js project:
+   
+   ```bash
+       npm init -y
+   ```
+  Install the required packages:
+  
+ ```bash
+     npm install mongoose
+     npm install express
+     npm install dotenv
+   ```
+##  Setup for frontend
+
+```bash
+    npm install
+  ```
+  ```bash
+    npm install bootstrap
+  ```
+
+### Starting the backend:
+ Navigate to the backend directory and run:
   ```bash
   cd backend
   node app.js
   ```
-### Pokretanje seed skripte:
+### Running the seed script:
 
 ```bash
 cd backend
@@ -23,104 +46,84 @@ node seed.js
 
 ---
 
-### Pokretanje frontend:
+### Starting the frontend:
 
- Navigacija u frontend direktorijum i pokretanje:
+ Navigate to the frontend directory and run:
    ```bash
      cd frontend
      npm start
   ```
 ---
 
-## 🏠 Početna stranica
+## Home page
 
-- Prikazuje se tabela sa svim oglasima.
-- Neregistrovani korisnici vide dugmad za **Login** i **Register**.
+- A table displaying all ads is shown
+- Unregistered users see Login and Register buttons
 
    ![Oglasi](https://github.com/DajanaRadovic/OnlineOglasavanje/blob/main/Oglasi/screenshots/oglasi.png)
 
-## 👤 Registracija korisnika
+## User Registration
 
-- Korisnik unosi korisničko ime, šifru i broj telefona.
-- Validacija unosa:
-  - Korisničko ime: minimum 3 karaktera
-  - Šifra: minimum 6 karaktera
-  - Telefon: dozvoljeni samo brojevi
+   - The user enters a username, password, and phone number.
+     
+      - Username: minimum 3 characters
+      - Password: minimum 6 characters
+      - Phone: numbers only allowed
 
-    ![Početna stranica](https://github.com/DajanaRadovic/OnlineOglasavanje/blob/main/Oglasi/screenshots/registracija.png)
+     ![Početna stranica](https://github.com/DajanaRadovic/OnlineOglasavanje/blob/main/Oglasi/screenshots/registracija.png)
 
-## 🔐 Prijava korisnika
+## User Login
 
-- Nakon uspešne prijave, korisnik može:
-  - Dodavati nove oglase
-  - Pregledati sve oglase
-  - Izlogovati se
+- After a successful login, the user can:
+  - Add new ads
+  - View all ads
+  - Log out
 
   ![Nakon prijave](https://github.com/DajanaRadovic/OnlineOglasavanje/blob/main/Oglasi/screenshots/nakonLogovanja.png)
 
-## ➕ Dodavanje oglasa
+## Adding an ad
 
-- Korisnik unosi sledeće podatke:
-  - Naziv oglasa
-  - Opis
-  - URL slike
-  - Cena
-  - Kategorija (iz padajućeg menija)
-  - Grad
+- The user enters the following information:
+  - Ad title
+  - Description
+  - Image URL
+  - Price
+  - Category (from a dropdown menu)
+  - City
 
      ![Oglasi](https://github.com/DajanaRadovic/OnlineOglasavanje/blob/main/Oglasi/screenshots/dodavanje.png)
 
-## ✏️ Izmena i 🗑️ Brisanje oglasa
+##  Editing and Deleting Ads
 
-- Opcije za izmenu i brisanje su dostupne samo vlasniku oglasa.
+- The options to edit and delete are available only to the ad owner.
 
-## 🔍 Detalji oglasa
+##  Ad Details
 
-- Prikaz detaljnog opisa oglasa i podataka o korisniku koji ga je postavio.
+- Displays a detailed description of the ad and information about the user who posted it.
 
   ![Detalji](https://github.com/DajanaRadovic/OnlineOglasavanje/blob/main/Oglasi/screenshots/detalji.png)
 
-## 🎯 Filtriranje oglasa
+##  Ad Filtering
 
-- Po kategoriji (padajući meni)
-- Po nazivu (pretraga koja nije osetljiva na velika/mala slova)
-- Po ceni (minimalna i/ili maksimalna)
-- Checkbox "Show mine only" — prikazuje samo oglase koje je korisnik postavio
+- By category (dropdown menu)
+- By title (case-insensitive search)
+- By price (minimum and/or maximum)
+- Checkbox "Show mine only" — displays only the ads posted by the user
 
-## 📄 Paginacija
+##  Pagination
 
-- Prikazuje se 20 oglasa po stranici
+- Displays 20 ads per page
 
 ---
-## 🔒 Bezbednost aplikacije
+## Application Security
 
-- Validacija inputa kod registracije
-- JWT autentifikacija
-- Hashiranje lozinki bcrypt-om
-- Autorizacija korisnika za izmene i brisanje oglasa
-- Korišćenje `.env` fajla za osetljive podatke
+- Input validation during registration
+- JWT Authentication
+- Password hashing using bcrypt
+- User authorization for editing and deleting ads
+- Using a .env file for sensitive data
 
-## 📦 Dodatna instalacija za backend
 
-   Prvo inicijalizujte Node.js projekat:
-   
-   ```bash
-       npm init -y
-   ```
-Instalirajte potrebne pakete:
- ```bash
-     npm install mongoose
-     npm install express
-     npm install dotenv
-   ```
-## 📦 Dodatna instalacija za frontend
-
-```bash
-    npm install
-  ```
-  ```bash
-    npm install bootstrap
-  ```
 
 
 

@@ -35,7 +35,7 @@ function App() {
   return (
   <div
       style={{
-        backgroundImage: "url('/images/pozadina.jpg')",
+        backgroundColor: "#f8f2f7ff",
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',

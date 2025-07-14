@@ -106,7 +106,7 @@ function EditAdvertisementPage() {
             {error && <div className="alert alert-danger mt-3">{error}</div>}
 
             <div className="col-12 mt-3 text-center">
-              <button type="submit" className="btn btn-primary px-5">Sačuvaj izmene</button>
+              <button type="submit" className="btn btn-pink px-5">Sačuvaj izmene</button>
             </div>
           </div>
         </form>

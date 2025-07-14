@@ -6,7 +6,7 @@ This is a full stack application for online advertising, developed using Express
 
 - **Backend:** Express.js
 - **Frontend:** React.js
-- **Baza:** MongoDB
+- **Database:** MongoDB
 
 ## Setup for backend
 

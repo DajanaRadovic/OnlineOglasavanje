@@ -14,10 +14,20 @@ async function seed() {
 
     const hashedPassword1 = await bcrypt.hash('korisnik', 10);
     const hashedPassword2 = await bcrypt.hash('dajana', 10);
+    const hashedPassword3 = await bcrypt.hash('korisnik3', 10);
+    const hashedPassword4 = await bcrypt.hash('korisnik4', 10);
+    const hashedPassword5 = await bcrypt.hash('korisnik5', 10);
+    const hashedPassword6 = await bcrypt.hash('korisnik6', 10);
+    const hashedPassword7 = await bcrypt.hash('korisnik7', 10);
 
     const users = await User.insertMany([
       { username: 'korisnik', password: hashedPassword1, phone: '123456', role: 'user' },
       { username: 'dajana', password: hashedPassword2, phone: '234567', role: 'user' },
+      { username: 'korisnik3', password: hashedPassword3, phone: '999999', role: 'user' },
+      { username: 'korisnik4', password: hashedPassword4, phone: '888888', role: 'user' },
+      { username: 'korisnik5', password: hashedPassword5, phone: '777777', role: 'user' },
+      { username: 'korisnik6', password: hashedPassword6, phone: '666666', role: 'user' },
+      { username: 'korisnik7', password: hashedPassword7, phone: '555555', role: 'user' },
     
     ]);
 
